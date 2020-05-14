@@ -56,6 +56,8 @@ sudo docker-compose up -d --build
 The code for the Rides functionality is in ```/Rides```
 #### Steps to run the entire setup of Rides VM
 
+```cd /Rides```
+
 ```sudo docker-compose up -d --build```
 
 		
@@ -63,6 +65,8 @@ The code for the Rides functionality is in ```/Rides```
 The code for the Users functionality is in ```/Users```
 
 #### Steps to run the entire setup of Users VM
+
+```cd /Users```
 
 ```sudo docker-compose up -d --build```
 
