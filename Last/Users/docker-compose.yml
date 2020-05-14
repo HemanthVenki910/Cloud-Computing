@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+
+  nginx-users:
+    build:
+     context: ./
+     dockerfile: Dockerfile-users-nginx
+    container_name: users
+    image: users:latest
+    depends_on:
+    - flask-users
+    ports:
+    - 80:80
+    environment:
+    - TEAM_NAME=CC_0213_1566_1573
+    networks:
+    - backend
+  
+  flask-users:
+   build:
+    context: ./
+    dockerfile: Dockerfile-users
+   container_name: flask-users
+   image: flask-users:latest 
+   ports:
+   - 8081:5000
+   volumes:
+   - ./:/Users
+   environment:
+   - TEAM_NAME=CC_0213_1566_1573
+   - FLASK_APP=/app_users.py
+   command: flask run --host=0.0.0.0
+   networks:
+    backend:
+     aliases:
+       - flask-app-users
+
+networks:
+ backend:

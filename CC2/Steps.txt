@@ -1,0 +1,38 @@
+history | grep docker 
+
+
+//Use these commands
+sudo docker-compose config
+sudo docker-compose up -d
+sudo docker-compose ps
+sudo docker exec container env
+sudo docker exec rides env
+sudo docker-compose down
+sudo docker-compose stop
+
+sudo docker exec -it rides bash //To log into the container and execute your work
+kill 1 // to kill the container
+sudo docker exec -it users bash
+
+sudo docker-compose stop
+sudo docker image prune -a
+sudo docker-compose up -d --remove-orphans 
+
+sudo docker-compose rm users
+sudo docker-compose rm rides
+
+sudo docker-compose system prune
+
+sudo docker system prune
+sudo docker images
+sudo docker-compose images
+
+sudo docker exec rides env
+sudo docker exec users env
+
+sudo docker-compose build --no-cache --pull
+sudo docker-compose up --force-recreate --build -d
+sudo service mysql start
+
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'admin@123';
+sudo docker exec -it users-db mysql -u root -p

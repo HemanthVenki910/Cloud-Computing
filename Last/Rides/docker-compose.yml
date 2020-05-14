@@ -1,0 +1,41 @@
+version: '3.1'
+
+services:
+  
+  nginx-rides:
+    build:
+     context: ./
+     dockerfile: Dockerfile-rides-nginx
+    container_name: rides
+    image: rides:latest
+    depends_on:
+    - flask-rides
+    ports:
+    - 80:80
+    environment:
+    - TEAM_NAME=CC_0213_1566_1573
+    networks:
+    - backend
+  
+  
+  flask-rides:
+   build:
+    context: ./
+    dockerfile: Dockerfile-rides
+   container_name: flask-rides
+   image: flask-rides:latest
+   ports:
+   - 8001:5000
+   volumes:
+   - ./:/Rides
+   command: flask run --host=0.0.0.0
+   environment:
+   - TEAM_NAME=CC_0213_1566_1573
+   - FLASK_APP=/app_rides.py
+   networks:
+    backend:
+     aliases:
+       - flask-app-rides
+
+networks:
+ backend:

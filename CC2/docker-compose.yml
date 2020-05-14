@@ -1,0 +1,118 @@
+version: '3.1'
+
+services:
+
+  
+  nginx-users:
+    build:
+     context: ./
+     dockerfile: Dockerfile-users-nginx
+    container_name: users
+    image: users:latest
+    depends_on:
+    - flask-users 
+    ports:
+    - 8080:80
+    environment:
+    - TEAM_NAME=CC_0213_1566_1573
+    networks:
+    - backend
+  
+  
+  flask-users:
+   build:
+    context: ./
+    dockerfile: Dockerfile-users
+   container_name: flask-users
+   image: flask-users:latest 
+   ports:
+   - 8081:5000
+   volumes:
+   - ./:/Users
+   environment:
+   - TEAM_NAME=CC_0213_1566_1573
+   - FLASK_APP=/app_users.py
+   command: flask run --host=0.0.0.0
+   depends_on:
+   - users-db
+   networks:
+    backend:
+     aliases:
+       - flask-app-users
+       
+  
+  users-db:
+   image: mysql:5.7.22
+   container_name: users-db
+   restart: unless-stopped
+   tty: true
+   ports:
+   - "3306:3306"
+   environment:
+     MYSQL_DATABASE: RideShare
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_USER: admin
+     MYSQL_PASSWORD: admin@123
+   networks:
+     backend:
+      aliases:
+       - mysql-users
+  
+  
+  nginx-rides:
+    build:
+     context: ./
+     dockerfile: Dockerfile-rides-nginx
+    container_name: rides
+    image: rides:latest
+    depends_on:
+    - flask-rides
+    ports:
+    - 8000:80  
+    environment:
+    - TEAM_NAME=CC_0213_1566_1573
+    networks:
+    - backend
+  
+  
+  flask-rides:
+   build:
+    context: ./
+    dockerfile: Dockerfile-rides
+   container_name: flask-rides
+   image: flask-rides:latest
+   ports:
+   - 8001:5000
+   volumes:
+   - ./:/Rides
+   depends_on:
+   - rides-db
+   command: flask run --host=0.0.0.0
+   environment:
+   - TEAM_NAME=CC_0213_1566_1573
+   - FLASK_APP=/app_rides.py
+   networks:
+    backend:
+     aliases:
+       - flask-app-rides
+  
+  
+  rides-db:
+   image: mysql:5.7.22
+   container_name: rides-db
+   restart: unless-stopped
+   tty: true
+   ports:
+   - "3307:3307"
+   environment:
+     MYSQL_DATABASE: RideShare
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_USER: admin
+     MYSQL_PASSWORD: admin@123
+   networks:
+     backend:
+      aliases:
+       - mysql-rides
+
+networks:
+ backend:
