@@ -7,6 +7,7 @@
 *	We assume that the basic requirements such as setup of the LoadBalancer is already met.
 
 ### Steps to run
+Enter the ```Last``` directory before running any the next steps.
 ```
 cd Last/
 ```
@@ -53,7 +54,7 @@ sudo docker-compose up -d --build
 ```
 
 ### Setup for Rides VM
-The code for the Rides functionality is in ```/Rides```
+The code for the Rides functionality is in ```Last/Rides```
 #### Steps to run the entire setup of Rides VM
 
 ```
@@ -66,7 +67,7 @@ sudo docker-compose up -d --build
 
 		
 ### Setup for Users VM
-The code for the Users functionality is in ```/Users```
+The code for the Users functionality is in ```Last/Users```
 
 #### Steps to run the entire setup of Users VM
 
