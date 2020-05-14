@@ -10,12 +10,15 @@
 ```
 cd Last/
 ```
-		Folder Named Last contains the final project code
-		SETUP for Orchestrator VM
-		To run the entire setup of Orchestrator VM
-				cd DBaas/
-				sudo docker-compose up -d --build
 
+### SETUP for Orchestrator VM
+*	To run the entire setup of Orchestrator VM execute the following two commands-
+```		
+cd DBaas/
+```
+```
+sudo docker-compose up -d --build
+```
 		The code for the Orchestrator	: 	/DBaas/Orchestrator
 		The code for the Worker		:	/DBaas/Worker
 
