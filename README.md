@@ -50,7 +50,7 @@ Directory of where code resides -
 	```/DBaas/Worker/worker_helper.py```
 3.	Constants mapping is in 
 
-	```/DBaas/Worker/constants.py``
+	```/DBaas/Worker/constants.py```
 
 ### Setup for Rides VM
 The code for the Rides functionality is in ```/Rides```
@@ -74,23 +74,26 @@ The code for the Users functionality is in ```/Users```
 **Steps to run**
 ```cd CC3/```
 
-The Folder Named CC3 containes Assignment3 code
-		SETUP for Users VM:
+Setup for Users VM:
+
 			cd Users/
 			sudo docker-compose up -d --build
 		
-		SETUP for Rides VM:
+Setup for Rides VM:
+
 			cd Rides/
 			sudo docker-compose up -d --build
 
-#Assignment 2 code in CC2
+# Assignment 2
+*	Assigment 2 code is in ```\CC2```
 
 		cd CC2/
-		Folder Named CC2 contains Assignment2 code
-		SETUP for all the required containers:
-			sudo docker-compose up -d --build
 
-#Assignment 1 code in CC1
+*	Setup for all the required containers:
+		
+		sudo docker-compose up -d --build
+
+# Assignment 1
 
 		cd CC1/
 		sudo python3 datasetup.py
