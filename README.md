@@ -56,9 +56,13 @@ sudo docker-compose up -d --build
 The code for the Rides functionality is in ```/Rides```
 #### Steps to run the entire setup of Rides VM
 
-```cd /Rides```
+```
+cd /Rides
+```
 
-```sudo docker-compose up -d --build```
+```
+sudo docker-compose up -d --build
+```
 
 		
 ### Setup for Users VM
@@ -66,9 +70,13 @@ The code for the Users functionality is in ```/Users```
 
 #### Steps to run the entire setup of Users VM
 
-```cd /Users```
+```
+cd /Users
+```
 
-```sudo docker-compose up -d --build```
+```
+sudo docker-compose up -d --build
+```
 
 # Assignment 3 
 *	Assigment 3 code is in ```\CC3```
@@ -77,7 +85,9 @@ The code for the Users functionality is in ```/Users```
 
 **Steps to run**
 
-```cd CC3/```
+```
+cd CC3/
+```
 
 Setup for Users VM:
 
@@ -100,6 +110,6 @@ Setup for Rides VM:
 
 # Assignment 1
 
-		cd CC1/
-		sudo python3 datasetup.py
-		sudo python3 app_server.py
+	cd CC1/
+	sudo python3 datasetup.py
+	sudo python3 app_server.py
