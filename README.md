@@ -10,17 +10,7 @@
 ```
 cd Last/
 ```
-
-### Setup for the Orchestrator VM
-*	To run the entire setup of Orchestrator VM execute the following two commands-
-```		
-cd DBaas/
-```
-```
-sudo docker-compose up -d --build
-```
-
-### Directory
+### Code Directory
 
 Directory of where code resides - 
 1.	The code for the Orchestrator is in 	
@@ -51,6 +41,16 @@ Directory of where code resides -
 3.	Constants mapping is in 
 
 	```/DBaas/Worker/constants.py```
+
+
+### Setup for the Orchestrator VM
+*	To run the entire setup of Orchestrator VM execute the following two commands-
+```		
+cd DBaas/
+```
+```
+sudo docker-compose up -d --build
+```
 
 ### Setup for Rides VM
 The code for the Rides functionality is in ```/Rides```
