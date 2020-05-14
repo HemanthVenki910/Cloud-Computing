@@ -1,6 +1,7 @@
 #TEAM NAME - CC_0213_1566_1573
 
-#PROJECT CODE under the folder /Last
+#PROJECT CODE 
+under the folder /Last
 #We assume that the required setup such as the LoadBalancer is already setup
 		cd Last/
 		Folder Named Last contains the final project code
