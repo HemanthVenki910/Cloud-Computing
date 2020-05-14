@@ -91,13 +91,13 @@ cd CC3/
 
 Setup for Users VM:
 
-			cd Users/
-			sudo docker-compose up -d --build
+		cd Users/
+		sudo docker-compose up -d --build
 		
 Setup for Rides VM:
 
-			cd Rides/
-			sudo docker-compose up -d --build
+		cd Rides/
+		sudo docker-compose up -d --build
 
 # Assignment 2
 *	Assigment 2 code is in ```\CC2```
