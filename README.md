@@ -1,9 +1,15 @@
-#TEAM NAME - CC_0213_1566_1573
+# TEAM NAME - CC_0213_1566_1573
 
-#PROJECT CODE 
-under the folder /Last
-#We assume that the required setup such as the LoadBalancer is already setup
-		cd Last/
+# Mini DBaaS for Rideshare
+
+*	Code for final DBaaS phase is in folder ``` /Last ```.
+
+*	We assume that the basic required setup such as the LoadBalancer is already done.
+
+### Steps to run
+```
+cd Last/
+```
 		Folder Named Last contains the final project code
 		SETUP for Orchestrator VM
 		To run the entire setup of Orchestrator VM
