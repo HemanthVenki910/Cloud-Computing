@@ -72,6 +72,7 @@ The code for the Users functionality is in ```/Users```
 *	We assume that the basic requirements such as setup of the LoadBalancer is already met.
 
 **Steps to run**
+
 ```cd CC3/```
 
 Setup for Users VM:
