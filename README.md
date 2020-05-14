@@ -1,17 +1,17 @@
 # TEAM NAME - CC_0213_1566_1573
 
-# Mini DBaaS for Rideshare
+# Mini DBaaS for Rideshare - Final Project
 
 *	Code for final DBaaS phase is in folder ``` /Last ```.
 
-*	We assume that the basic required setup such as the LoadBalancer is already done.
+*	We assume that the basic requirements such as setup of the LoadBalancer is already met.
 
 ### Steps to run
 ```
 cd Last/
 ```
 
-### SETUP for Orchestrator VM
+### Setup for the Orchestrator VM
 *	To run the entire setup of Orchestrator VM execute the following two commands-
 ```		
 cd DBaas/
@@ -19,33 +19,62 @@ cd DBaas/
 ```
 sudo docker-compose up -d --build
 ```
-		The code for the Orchestrator	: 	/DBaas/Orchestrator
-		The code for the Worker		:	/DBaas/Worker
 
-		Orchestrator split into 3 different files
-		Main Application code			:	/DBaas/Orchestrator/app_orchestrator.py
-		helper code				:	/DBaas/Orchestrator/helper.py
-		global constants			: 	/DBaas/Orchestrator/constants.py
+### Directory
 
-		Worker split into 3 different files
-		Main Application code			:	/DBaas/Worker/app_worker.py
-		helper code				:	/DBaas/Worker/worker_helper.py
-		global constants			:	/DBaas/Worker/constants.py
-
-		SETUP for Rides VM
-		The code for the Rides			: 	/Rides
-		To run the entire setup of Rides VM
-				sudo docker-compose up -d --build
+Directory of where code resides - 
+1.	The code for the Orchestrator is in 	
 		
-		SETUP for Users VM
-		The code for the Rides			: 	/Users
-		To run the entire setup of Users VM
-				sudo docker-compose up -d --build
+	```/DBaas/Orchestrator```
+2.	The code for the Worker is in	
 
-#Assignment 3 code in CC3
-#We assume that the required setup such as the LoadBalancer is already setup
-		cd CC3/
-		Folder Named CC3 containes Assignment3 code
+	```/DBaas/Worker```
+
+**The Orchestrator Codebase is split into 3 different files**
+1.	Main application code is in	
+
+	```/DBaas/Orchestrator/app_orchestrator.py```
+2.	Helper code is in
+	
+	```DBaas/Orchestrator/helper.py```
+3.	Constants mapping is in 	
+	
+	```/DBaas/Orchestrator/constants.py```
+
+**The Worker Codebase is split into 3 different files**
+1.	Main application code is in
+
+	```/DBaas/Worker/app_worker.py```
+2.	Helper code is in
+
+	```/DBaas/Worker/worker_helper.py```
+3.	Constants mapping is in 
+
+	```/DBaas/Worker/constants.py``
+
+### Setup for Rides VM
+The code for the Rides functionality is in ```/Rides```
+#### Steps to run the entire setup of Rides VM
+
+```sudo docker-compose up -d --build```
+
+		
+### Setup for Users VM
+The code for the Users functionality is in ```/Users```
+
+#### Steps to run the entire setup of Users VM
+
+```sudo docker-compose up -d --build```
+
+# Assignment 3 
+*	Assigment 3 code is in ```\CC3```
+
+*	We assume that the basic requirements such as setup of the LoadBalancer is already met.
+
+**Steps to run**
+```cd CC3/```
+
+The Folder Named CC3 containes Assignment3 code
 		SETUP for Users VM:
 			cd Users/
 			sudo docker-compose up -d --build
