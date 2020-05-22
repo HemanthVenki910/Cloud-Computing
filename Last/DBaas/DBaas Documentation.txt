@@ -1,0 +1,118 @@
+﻿DBaaS Documentation
+
+
+Orchestrator/app_orchestrator.py
+
+
+index_page(): Returns default page.
+
+
+write_to_db(): Writes data to database.
+
+
+read_from_db(): Reads data from the database and keeps track of the number of 
+read requests.
+
+
+trap_for_read_methods(): Traps all read requests with any request method other  than “POST”.
+
+
+crash_master_node(): Used to crash master node and returns the PID as the response.
+
+
+crash_slave_node(): Used to crash slave node and returns the PID as the response.
+
+
+list_slave_nodes():Lists all slave nodes.
+
+
+check_znodes(): It checks the current number of slave nodes and increases/decreases based on the required number of slaves which is calculated by the number of requests.
+
+
+clear_db():Clears the rideshare database.
+
+
+
+
+Orchestrator/helper.py 
+
+
+initial_setup(): Connects to Zookeeper using Kazoo(python client for zookeeper) and creates a path for Master and workers if it doesn’t exist.
+
+
+Class Query_To_Database(object): Connects to RabbitMQ using Pika(python client for RabbitMQ), disables heartbeat, sets socket timeout to 2 seconds and sets various other parameters for the connection. Creates a channel and declares write & response queue.
+
+
+write_response(self,channel,method,properties,message_body): If the write ids match it deserializes message body.
+
+
+read_response(self,channel,method,properties,message_body):If the read ids match it deserializes message body.
+
+
+write_query_to_database(self,request_data): Once the lock is acquired generates a unique id for the transaction and publish the message to the default exchange with routing key value set to the queue name(write queue) and returns the write response.
+
+
+read_query_from_database(self,request_data): Once the lock is acquired generates a unique id for the transaction and publish the message to the default exchange with routing key value set to the queue name(read queue) and returns the read response.
+
+
+start_timer(self): Sets timer for 120 seconds to reset the requests counter.
+
+
+timer_on_counts(self): Increases the slaves based on the number of requests and resets the timer.
+
+
+get_all_nodes_pid(self): Lists all PID of slaves in a sorted manner.
+
+
+get_master_details(self): Returns PID of Master node.
+
+
+get_slave_details(self): Returns PID of last slave or slave with the highest PID to be pruned.
+
+
+create_worker(self): Creates a new slave node by cloning the master node and sets the required parameters for the newly created container.
+
+
+crash_worker(self,worker_details): Stops the node (Slave/Master) and its corresponding database.
+
+
+control_slaves(self): Compares the current number of slave nodes to the required number of nodes and accordingly increases/decreases the number of slaves to match the realtime requirement which depends on the requests. \
+
+
+Worker/app_worker.py
+
+
+write_to_db(request): Connects to MySQL database and based on request performs insert/delete/deleteAll operations on the database by generating appropriate SQL queries and executes the same on the database and returns appropriate status codes.
+
+
+read_from_db(request): Connects to MySQL database and based on request performs read operations on the database by generating appropriate SQL queries and returns the data fetched from the database with appropriate status codes.
+
+
+write_call_to_db(ch, method, properties_received, message_body): Checks for Master node and performs the writes onto the master database. Master node publishes sync requests to all the slaves using a fanout exchange.
+
+
+read_call_to_db(ch, method, properties_received, message_body): Upon finding a slave node publish a read request into its read queue.
+
+
+sync_data_to_db(ch, method, properties, message_body): Upon finding a slave node performs the modifications to its corresponding database as per the sync request published from the master node.
+
+
+watch_master(children): Elects the slave with the lowest PID and converts it to master node.
+
+
+
+
+Worker/worker_helper.py 
+
+
+check_for_master(zoo_handler): Boolean function to check for master node, returns true if master exists.
+
+
+database_setup(): To set up our MySQL rideshare database with the required parameters.
+
+
+executeScriptsFromFile(cursor,filename): Excutes SQL commands from the given file.        
+get_master_db_container(zk): Returns the Master database container.
+
+
+initial_setup(): Connects to zookeeper using Kazoo(python client for zookeeper) and creates database containers for master along with dump file.
